@@ -1,16 +1,19 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('./index');
+const { sequelize, DataTypes } = require('./index');
 
+// User 모델 정의
 const User = sequelize.define('User', {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+}, {
+    tableName: 'users',
+    timestamps: false,
 });
 
 module.exports = User;

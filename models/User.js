@@ -16,4 +16,19 @@ const User = sequelize.define('User', {
     timestamps: false,
 });
 
-module.exports = User;
+// Test 모델 정의
+const Test = sequelize.define('Test', {
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+}, {
+    tableName: 'test',
+    timestamps: false,
+});
+
+module.exports = { User, Test };

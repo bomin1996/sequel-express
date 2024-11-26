@@ -1,4 +1,3 @@
-// models/index.js
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 

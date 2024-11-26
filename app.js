@@ -1,5 +1,6 @@
 const express = require('express');
 const userRouter = require('./routes/userRoutes');
+require('dotenv').config();
 
 // Express 앱 생성
 const app = express();
@@ -15,23 +16,3 @@ app.use('/users', userRouter);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
-
-// models/index.js
-const { Sequelize, DataTypes } = require('sequelize');
-
-// Sequelize 인스턴스 생성 (MySQL 연동)
-const sequelize = new Sequelize('testdb', 'username', 'password', {
-    host: 'localhost',
-    dialect: 'mysql',
-});
-
-// 데이터베이스 동기화
-sequelize.sync()
-    .then(() => {
-        console.log('Database & tables created!');
-    })
-    .catch((error) => {
-        console.error('Unable to connect to the database:', error);
-    });
-
-module.exports = { sequelize, DataTypes };
